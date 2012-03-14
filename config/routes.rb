@@ -1,4 +1,7 @@
 FarmServer::Application.routes.draw do
+
+  match '/get_image', :to => 'resources#get_image'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

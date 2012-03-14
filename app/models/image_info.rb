@@ -13,5 +13,12 @@
 #
 
 class ImageInfo < ActiveRecord::Base
+
+  def self.get_image_by_id image_id
+    resource_path = Rails.root.to_s + '/resources'
+    image_info = ImageInfo.find image_id
+    File.new resource_path + image_info._file_path unless image_info.nil?
+  end
+
 end
 
