@@ -1,6 +1,10 @@
 FarmServer::Application.routes.draw do
 
   match '/get_image', :to => 'resources#get_image'
+  match '/set_plant', :to => 'game_actions#set_plant'
+  match '/collect_plant', :to => 'game_actions#collect_plant'
+  match '/raise_time', :to => 'game_actions#raise_time'
+  match '/get_farm_content', :to => 'game_actions#get_farm_content'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

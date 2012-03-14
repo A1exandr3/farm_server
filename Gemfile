@@ -7,6 +7,7 @@ gem 'rails', '3.1.1'
 
 gem 'pg'
 
+gem 'libxml-ruby'
 
 group :development do
   gem 'annotate', :git => 'git://github.com/jeremyolliver/annotate_models.git', :branch => 'rake_compatibility'
