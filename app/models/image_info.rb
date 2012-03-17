@@ -12,12 +12,14 @@
 #  index_image_infos_on_id  (id)
 #
 
+require 'cache_holder'
+
 class ImageInfo < ActiveRecord::Base
 
+  # @param image_id [integer] id изображения
+  # @return [Object] изображение из кэша
   def self.get_image_by_id image_id
-    resource_path = Rails.root.to_s + '/resources'
-    image_info = ImageInfo.find image_id
-    File.new resource_path + image_info._file_path unless image_info.nil?
+    CacheHolder.instance.get_images[image_id.to_i]
   end
 
 end

@@ -18,6 +18,8 @@
 #  index_plants_on_id       (id)
 #
 
+require 'cache_holder'
+
 class Plant < ActiveRecord::Base
   belongs_to :farm
   belongs_to :plant_type
@@ -35,12 +37,14 @@ class Plant < ActiveRecord::Base
     self.recalculate_growth_stage
   end
 
+  #Устанавливает значение по умолчанию для созданного растения
   def on_before_validation
     self.life_time ||= 1
   end
 
+  #пересчитвает стадию роста растения в зависимости от его времени жизни
   def recalculate_growth_stage
-    GrowthStage.find_all_by_plant_type_id(self.plant_type_id).each do |growth_stage|
+    CacheHolder.instance.get_plant_meta_info[self.plant_type_id].each do |growth_stage|
       self.growth_stage = nil
       if (self.life_time > growth_stage._min_bound && self.life_time <= growth_stage._max_bound)
         self.growth_stage = growth_stage

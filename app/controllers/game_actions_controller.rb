@@ -24,4 +24,8 @@ class GameActionsController < ApplicationController
     send_data farm.get_content
   end
 
+  def get_game_params
+    send_data Farm.get_game_params
+  end
+
 end

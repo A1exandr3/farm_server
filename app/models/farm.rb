@@ -43,6 +43,7 @@ class Farm < ActiveRecord::Base
     end
   end
 
+  # @return [XML] Описание растений, принадлежащих ферме
   def get_content
     xml_doc = XML::Document.new()
     xml_doc.root = XML::Node.new('plants')
@@ -59,6 +60,26 @@ class Farm < ActiveRecord::Base
       plant_node['life_time'] = plant.life_time.to_s
       plant_node['collectable'] = plant.collectable.to_s
       plant_node['image_id'] = plant.image_id.to_s
+    end
+
+    xml_doc
+  end
+
+  # @return [XML] Описание возможных типов растений; координаты и размеры игрового поля
+  def self.get_game_params
+    xml_doc = XML::Document.new()
+    xml_doc.root = XML::Node.new('farm_game')
+    xml_root = xml_doc.root
+    xml_root['grid_x'] = '740'
+    xml_root['grid_y'] = '430'
+    xml_root['grid_size'] = '630'
+    xml_root['bg_image_id'] = CacheHolder.instance.get_bg_image_id
+
+    CacheHolder.instance.get_plant_types.each_value do |plant_type|
+      xml_root << plant_type_node = XML::Node.new('plant_type')
+      plant_type_node['id'] = plant_type.id.to_s
+      plant_type_node['name'] = plant_type._name
+      plant_type_node['icon_image_id'] = plant_type.image_info_id.to_s
     end
 
     xml_doc
