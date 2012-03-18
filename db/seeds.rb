@@ -79,6 +79,6 @@
 
   for i in 1..9
     for j in 2..10
-      Plant.create :plant_type_id => 1 + rand(1..3), :_x => i, :_y => j, :farm_id => farm, :life_time => 1 + rand(500)
+      Plant.create :plant_type_id => 1 + rand(3), :_x => i, :_y => j, :farm_id => farm, :life_time => 1 + rand(500)
     end
   end
