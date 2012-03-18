@@ -77,8 +77,8 @@
   #тестовая ферма с растениями
   farm = Farm.create
 
-  for i in 1..10
-    for j in 1..10
-      Plant.create :plant_type_id => 1 + rand(2), :_x => i, :_y => j, :farm_id => farm, :life_time => 1 + rand(499)
+  for i in 1..9
+    for j in 2..10
+      Plant.create :plant_type_id => 1 + rand(1..3), :_x => i, :_y => j, :farm_id => farm, :life_time => 1 + rand(500)
     end
   end
