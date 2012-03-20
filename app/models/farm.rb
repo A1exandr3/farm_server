@@ -74,6 +74,7 @@ class Farm < ActiveRecord::Base
     xml_root['grid_y'] = '430'
     xml_root['grid_size'] = '630'
     xml_root['bg_image_id'] = CacheHolder.instance.get_bg_image_id
+    xml_root['clock_icon_id'] = CacheHolder.instance.get_clock_icon_id
 
     CacheHolder.instance.get_plant_types.each_value do |plant_type|
       xml_root << plant_type_node = XML::Node.new('plant_type')

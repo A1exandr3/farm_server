@@ -24,6 +24,8 @@ class CacheHolder
 
     #файл фонового изображения
     @bg_image_id = ImageInfo.find_by__file_path('/BG.jpg').id.to_s
+
+    @clock_icon_id = ImageInfo.find_by__file_path('/clock.png').id.to_s
   end
 
   def get_images
@@ -40,6 +42,10 @@ class CacheHolder
 
   def get_bg_image_id
     @bg_image_id
+  end
+
+  def get_clock_icon_id
+    @clock_icon_id
   end
 
 end

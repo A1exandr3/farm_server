@@ -11,6 +11,8 @@
   #Фоновое изображение
   ImageInfo.create(:_file_path => '/BG.jpg')
 
+  ImageInfo.create(:_file_path => '/clock.png')
+
   #Заполнение типов растений и стадий роста для каждого типа растений
 
   plant_type = PlantType.new :_name => 'Клевер'
